@@ -2,6 +2,7 @@ var tempoInicial = $("#tempo-digitacao").text();
 var campo = $(".campo-digitacao");
 
 $(function() {
+    //reiniciaJogo();
     atualizaTamanhoFrase();
     inicializaContadores();
     inicializaCronometro();

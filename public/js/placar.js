@@ -7,6 +7,9 @@ function inserePlacar() {
     linha.find(".botao-remover").click(removeLinha);
 
     corpoTabela.append(linha);
+
+    $(".placar").slideDown(500);//da um scroll pro placar
+    scrollPlacar() // animação do scroll
 }
 
 function novaLinha(usuario, palavras) {
@@ -31,7 +34,23 @@ function novaLinha(usuario, palavras) {
 
 function removeLinha() {
     event.preventDefault();
-    $(this).parent().parent().remove();
+    var linha = $(this).parent().parent().fadeOut(1000); //aplicar efeito jquery de esvanecer
+
+    setTimeout(() => linha.remove(),1000);//remover a linha depois de um segundo
 }
 
+$("#botao-placar").click(mostrarPlacar);
+
+function mostrarPlacar() {
+   $('.placar').stop().slideToggle(600); //seta a exibição do display
+
+}
+
+function scrollPlacar(){
+   var posicaoPlacar = $(".placar").offset().top;//localização do placar em relação ao topo da pagina
+
+    $('body').animate({
+        scrollTop: posicaoPlacar + "px" // move para a posição do placar em px
+    },1000);
+}
 
